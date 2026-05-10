@@ -1,108 +1,108 @@
 # 🌍 Traveloop — AI-Powered Travel Planning Platform
 
-A complete full-stack travel planner built with React + TypeScript + Express + MongoDB.
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js v18+
-- MongoDB (local or Atlas)
-
-### 1. Backend Setup
-
-```bash
-cd backend
-# Edit .env with your MongoDB URI and GROQ_API_KEY
-npm install
-npm run dev          # Start dev server on http://localhost:5000
-```
-
-### 2. Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm run dev          # Start on http://localhost:5173
-```
-
-### Demo Login
-- **Email:** `demo@traveloop.com`
-- **Password:** `demo1234`
+**Traveloop** is a premium, AI-driven travel planning application that turns your scattered ideas into stunning, organized itineraries. Built with a modern tech stack and a focus on visual storytelling.
 
 ---
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18 + TypeScript + Vite |
-| Styling | Tailwind CSS v3 + custom animations |
-| UI Components | Radix UI + custom components |
-| State | React Query + React Context |
-| Routing | React Router DOM v6 |
-| AI Model | Llama 3.3 (via Groq Cloud) |
-| Backend | Node.js + Express.js |
-| Database | MongoDB + Mongoose |
-| Auth | JWT + bcryptjs |
-| File Upload | Multer |
-| Image Storage | Cloudinary (optional) |
-
-## 📁 Project Structure
-
-```
-odoo/
-├── backend/
-│   ├── src/
-│   │   ├── config/        # DB connection
-│   │   ├── controllers/   # Route handlers
-│   │   ├── middleware/    # Auth, error, upload
-│   │   ├── models/        # Mongoose schemas
-│   │   ├── routes/        # Express routers
-│   │   └── utils/         # Seed script
-│   └── uploads/           # Local file storage
-│
-└── frontend/
-    └── src/
-        ├── components/    # Reusable UI components
-        ├── context/       # Auth + Theme contexts
-        ├── layouts/       # AppLayout wrapper
-        ├── pages/         # Route-level pages
-        ├── services/      # API layer (axios)
-        ├── types/         # TypeScript interfaces
-        └── utils/         # Helpers + constants
-```
-
-## 🔌 API Endpoints
-
-| Method | Route | Description |
-|--------|-------|-------------|
-| POST | `/api/auth/register` | Register user |
-| POST | `/api/auth/login` | Login |
-| GET | `/api/auth/me` | Get current user |
-| PUT | `/api/auth/profile` | Update profile |
-| GET | `/api/trips` | List user trips |
-| POST | `/api/trips` | Create trip |
-| GET | `/api/trips/:id` | Get trip details |
-| PUT | `/api/trips/:id` | Update trip |
-| DELETE | `/api/trips/:id` | Delete trip |
-| POST | `/api/trips/:id/share` | Generate share link |
-| GET | `/api/trips/shared/:token` | Public trip view |
-| POST | `/api/trips/:id/stops` | Add city stop |
-| PUT | `/api/trips/:id/stops/:sid` | Update stop |
-| DELETE | `/api/trips/:id/stops/:sid` | Delete stop |
-| POST | `/api/trips/:id/stops/:sid/activities` | Add activity |
-| GET | `/api/trips/:tripId/packing` | Packing list |
-| GET | `/api/trips/:tripId/notes` | Trip notes |
 
 ## ✨ Features
 
-- 🔐 **JWT Authentication**: Secure register / login / logout flow.
-- 🗺️ **Itinerary Builder**: Multi-city planning with reorderable stops.
-- 🤖 **AI Trip Planner**: Generate 7-day itineraries in seconds using Llama 3.3.
-- 💰 **Budget Analytics**: Detailed breakdown charts (Pie/Line) for cost tracking.
-- 🔗 **Public Share Page**: Beautiful, read-only links to showcase your plans.
-- 📦 **Packing & Notes**: Checklist management and colorful sticky notes.
-- 🌙 **Modern UI**: Full dark mode support and responsive "Traveloop" aesthetic.
+- 🤖 **AI Trip Planner**: Generate full 7-day itineraries in seconds using **Llama 3.3** (via Groq Cloud).
+- 💰 **Budget Analytics**: Interactive Pie and Line charts (via Recharts) to track spending across cities and categories.
+- 🗺️ **Visual Timeline**: A professional vertical timeline for stops and activities with drag-and-drop reordering.
+- 🔗 **Public Share Page**: Generate tokenized, read-only links to share your plans with friends and family.
+- 📦 **Packing & Notes**: Category-based checklists and colorful sticky notes for trip journaling.
+- 🔐 **Secure Auth**: JWT-based authentication with protected routes and personalized profiles.
+- 🌙 **Modern Aesthetic**: Full dark/light mode support with a cyan-to-teal premium design system.
 
 ---
-© 2026 Traveloop. All adventures reserved.
+
+## 🚀 Quick Start
+
+### 1. Prerequisites
+- **Node.js** (v18 or higher)
+- **MongoDB** (Local instance or Atlas)
+- **Groq API Key** (Get it free at [Groq Console](https://console.groq.com/))
+
+### 2. Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/parthnanda06/traveloop-planner.git
+cd traveloop-planner
+
+# Install Backend Dependencies
+cd backend
+npm install
+
+# Install Frontend Dependencies
+cd ../frontend
+npm install
+```
+
+### 3. Environment Setup
+
+Create a `.env` file in the **backend** directory:
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+GROQ_API_KEY=your_groq_api_key
+CLIENT_URL=http://localhost:5173
+```
+
+### 4. Run the Application
+
+```bash
+# From the root directory
+npm run dev
+```
+*The backend will run on port 5000 and the frontend on port 5173.*
+
+---
+
+## 📁 Project Structure
+
+```text
+odoo/
+├── backend/
+│   ├── src/
+│   │   ├── controllers/   # Business logic & AI orchestration
+│   │   ├── middleware/    # Auth & Error handling
+│   │   ├── models/        # Mongoose data schemas
+│   │   └── routes/        # API endpoint definitions
+│
+└── frontend/
+    └── src/
+        ├── components/    # Reusable UI (Card, Button, Badge)
+        ├── context/       # Global Auth & Theme state
+        ├── pages/         # High-level route components
+        └── services/      # Axios API service layer
+```
+
+---
+
+## 🔌 Core API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/auth/register` | Create a new account |
+| `POST` | `/api/ai/generate` | Generate AI itinerary |
+| `GET`  | `/api/trips` | Fetch all user trips |
+| `POST` | `/api/trips/:id/share` | Create public share link |
+| `GET`  | `/api/trips/shared/:token` | Access public trip view |
+
+---
+
+## 🛠️ Built With
+
+- **Frontend**: React 18, Vite, Tailwind CSS, Framer Motion, Recharts, TanStack Query.
+- **Backend**: Node.js, Express, Mongoose, JWT.
+- **AI**: Groq Cloud (Llama 3.3 70B).
+
+---
+© 2026 Traveloop. All adventures reserved. Built with ❤️ for travelers everywhere.
