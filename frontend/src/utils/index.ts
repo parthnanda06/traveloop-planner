@@ -88,6 +88,12 @@ export function truncate(str: string, length = 60) {
   return str.length > length ? `${str.slice(0, length)}...` : str;
 }
 
+export function resolveImageUrl(path?: string) {
+  if (!path) return null;
+  if (path.startsWith('http')) return path;
+  return `http://localhost:5000${path}`;
+}
+
 export const POPULAR_DESTINATIONS = [
   { city: 'Paris', country: 'France', emoji: '🗼', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400' },
   { city: 'Tokyo', country: 'Japan', emoji: '🗾', image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400' },

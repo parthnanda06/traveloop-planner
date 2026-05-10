@@ -163,7 +163,7 @@ export const updateStop = async (req: Request, res: Response) => {
     const trip = await Trip.findOne({ _id: req.params.id, user: req.user!.userId });
     if (!trip) return res.status(404).json({ success: false, message: 'Trip not found' });
 
-    const stop = trip.stops.id(req.params.stopId);
+    const stop = (trip.stops as any).id(req.params.stopId);
     if (!stop) return res.status(404).json({ success: false, message: 'Stop not found' });
 
     Object.assign(stop, req.body);
@@ -213,7 +213,7 @@ export const addActivity = async (req: Request, res: Response) => {
     const trip = await Trip.findOne({ _id: req.params.id, user: req.user!.userId });
     if (!trip) return res.status(404).json({ success: false, message: 'Trip not found' });
 
-    const stop = trip.stops.id(req.params.stopId);
+    const stop = (trip.stops as any).id(req.params.stopId);
     if (!stop) return res.status(404).json({ success: false, message: 'Stop not found' });
 
     stop.activities.push(req.body);
@@ -229,7 +229,7 @@ export const updateActivity = async (req: Request, res: Response) => {
     const trip = await Trip.findOne({ _id: req.params.id, user: req.user!.userId });
     if (!trip) return res.status(404).json({ success: false, message: 'Trip not found' });
 
-    const stop = trip.stops.id(req.params.stopId);
+    const stop = (trip.stops as any).id(req.params.stopId);
     if (!stop) return res.status(404).json({ success: false, message: 'Stop not found' });
 
     const activity = (stop.activities as any).id(req.params.activityId);
@@ -248,7 +248,7 @@ export const deleteActivity = async (req: Request, res: Response) => {
     const trip = await Trip.findOne({ _id: req.params.id, user: req.user!.userId });
     if (!trip) return res.status(404).json({ success: false, message: 'Trip not found' });
 
-    const stop = trip.stops.id(req.params.stopId);
+    const stop = (trip.stops as any).id(req.params.stopId);
     if (!stop) return res.status(404).json({ success: false, message: 'Stop not found' });
 
     stop.activities = stop.activities.filter(

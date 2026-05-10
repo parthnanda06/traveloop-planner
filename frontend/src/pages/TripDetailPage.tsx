@@ -18,7 +18,7 @@ import { Textarea, Select } from '../components/ui/FormElements';
 import {
   formatDate, formatCurrency, getTripStatusColor, getDaysCount,
   getBudgetBreakdown, getActivityCategoryIcon,
-  getActivityCategoryColor
+  getActivityCategoryColor, resolveImageUrl
 } from '../utils';
 import { 
   PieChart, Pie, Cell, ResponsiveContainer, Tooltip,
@@ -159,7 +159,7 @@ const TripDetailPage: React.FC = () => {
       {/* Cover */}
       {data.coverImage && (
         <div className="h-52 rounded-2xl overflow-hidden">
-          <img src={`http://localhost:5000${data.coverImage}`} alt={data.title} className="w-full h-full object-cover"/>
+          <img src={resolveImageUrl(data.coverImage)!} alt={data.title} className="w-full h-full object-cover"/>
         </div>
       )}
 

@@ -12,7 +12,7 @@ import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
 import { SkeletonCard, EmptyState } from '../components/ui/LoadingStates';
-import { formatDate, getTripStatusColor, getDaysCount, POPULAR_DESTINATIONS } from '../utils';
+import { formatDate, getTripStatusColor, getDaysCount, POPULAR_DESTINATIONS, resolveImageUrl } from '../utils';
 import type { Trip } from '../types';
 
 const DashboardPage: React.FC = () => {
@@ -133,7 +133,7 @@ const DashboardPage: React.FC = () => {
                     <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-muted">
                       {trip.coverImage ? (
                         <img
-                          src={trip.coverImage.startsWith('/') ? `http://localhost:5000${trip.coverImage}` : trip.coverImage}
+                          src={resolveImageUrl(trip.coverImage)!}
                           alt={trip.title}
                           className="w-full h-full object-cover"
                         />

@@ -12,7 +12,7 @@ import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Badge } from '../components/ui/Badge';
 import { SkeletonCard, EmptyState, Modal } from '../components/ui/LoadingStates';
-import { formatDate, getTripStatusColor, getDaysCount, calculateTripBudget, formatCurrency } from '../utils';
+import { formatDate, getTripStatusColor, getDaysCount, calculateTripBudget, formatCurrency, resolveImageUrl } from '../utils';
 import type { Trip } from '../types';
 
 const TripsPage: React.FC = () => {
@@ -108,12 +108,16 @@ const TripsPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
             >
-              <Card hover className="overflow-hidden group">
+              <Card 
+                hover 
+                className="overflow-hidden group"
+                onClick={() => navigate(`/trips/${trip._id}`)}
+              >
                 {/* Cover Image */}
                 <div className="relative h-48 overflow-hidden bg-muted">
                   {trip.coverImage ? (
                     <img
-                      src={trip.coverImage.startsWith('/') ? `http://localhost:5000${trip.coverImage}` : trip.coverImage}
+                      src={resolveImageUrl(trip.coverImage)!}
                       alt={trip.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -166,7 +170,10 @@ const TripsPage: React.FC = () => {
                       <Button
                         variant="ghost"
                         size="icon-sm"
-                        onClick={() => navigate(`/trips/${trip._id}`)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/trips/${trip._id}`);
+                        }}
                         title="View"
                       >
                         <Eye size={15} />
@@ -174,7 +181,10 @@ const TripsPage: React.FC = () => {
                       <Button
                         variant="ghost"
                         size="icon-sm"
-                        onClick={() => navigate(`/trips/${trip._id}/edit`)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/trips/${trip._id}/edit`);
+                        }}
                         title="Edit"
                       >
                         <Edit size={15} />
@@ -182,7 +192,10 @@ const TripsPage: React.FC = () => {
                       <Button
                         variant="ghost"
                         size="icon-sm"
-                        onClick={() => setDeleteModal({ open: true, trip })}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setDeleteModal({ open: true, trip });
+                        }}
                         title="Delete"
                         className="text-destructive hover:text-destructive hover:bg-destructive/10"
                       >
