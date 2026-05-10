@@ -31,9 +31,12 @@ export const Sidebar: React.FC = () => {
     >
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 py-5 border-b border-border">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0e7490] to-[#22d3ee] flex items-center justify-center shrink-0 shadow-lg shadow-cyan-500/30">
+        <button
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0e7490] to-[#22d3ee] flex items-center justify-center shrink-0 shadow-lg shadow-cyan-500/30 hover:scale-105 transition-transform active:scale-95"
+        >
           <Plane className="text-white" size={20} />
-        </div>
+        </button>
         {!isCollapsed && (
           <motion.span
             initial={{ opacity: 0 }}
