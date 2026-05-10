@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
-  ChevronLeft, Upload, Calendar, MapPin, Tag, FileText, X, Plus
+  ChevronLeft, Upload, Calendar, MapPin, Tag, X, Plus
 } from 'lucide-react';
 import { tripService } from '../services/api';
 import { Button } from '../components/ui/Button';
