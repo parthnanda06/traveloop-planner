@@ -192,7 +192,12 @@ const DashboardPage: React.FC = () => {
           <h2 className="text-xl font-semibold pt-2">Popular Destinations</h2>
           <div className="space-y-2">
             {POPULAR_DESTINATIONS.slice(0, 4).map(({ city, country, emoji }) => (
-              <Card key={city} hover className="p-3">
+              <Card 
+                key={city} 
+                hover 
+                className="p-3 cursor-pointer"
+                onClick={() => navigate(`/trips/new?city=${city}&country=${country}`)}
+              >
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">{emoji}</span>
                   <div>

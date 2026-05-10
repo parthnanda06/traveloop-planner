@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
@@ -12,6 +12,7 @@ import { Textarea, Select } from '../components/ui/FormElements';
 
 const CreateTripPage: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const queryClient = useQueryClient();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -27,6 +28,19 @@ const CreateTripPage: React.FC = () => {
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState('');
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const city = searchParams.get('city');
+    const country = searchParams.get('country');
+    if (city && country) {
+      setForm(prev => ({
+        ...prev,
+        title: `${city} Exploration 🌍`,
+        description: `Planning an amazing journey to ${city}, ${country}!`,
+        tags: [city.toLowerCase(), country.toLowerCase()]
+      }));
+    }
+  }, [searchParams]);
 
   const mutation = useMutation({
     mutationFn: (formData: FormData) => tripService.create(formData),
